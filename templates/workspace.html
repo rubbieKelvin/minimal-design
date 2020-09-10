@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Design - Home</title>
+
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'css/workspace.css' %}">
+    
+</head>
+<body>
+
+    <div id='app' v-bind:style="{backgroundColor:theme.Bg}">
+
+        {% comment %} navigation {% endcomment %}
+        <nav-bar v-bind:theme="theme" v-bind:button-size="buttonSize" v-bind:style="{
+            position: 'fixed',
+            top: '0px',
+            right: '0px',
+            left: '0px'
+        }">
+
+            <template v-slot:center>
+
+                <input 
+                    type="text"
+                    id="nav-input-title"
+                    placeholder="Design Title..."
+                    value="New Design"
+                    v-bind:style="{
+                        color: theme.Text
+                    }">
+
+            </template>
+
+            <template v-slot:end>
+
+                {% comment %} undo {% endcomment %}
+                <icon-button
+                    v-bind:color="theme.Gray6"
+                    v-bind:size="buttonSize">
+
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.13324 4.4679H8.13324V7.02499C9.32325 6.0899 10.8238 5.5322 12.4547 5.5322C16.3207 5.5322 19.4547 8.6662 19.4547 12.5322C19.4547 16.3982 16.3207 19.5322 12.4547 19.5322C10.3042 19.5322 8.3802 18.5625 7.09613 17.0364L8.71545 15.8516C9.63135 16.8826 10.9672 17.5322 12.4547 17.5322C15.2161 17.5322 17.4547 15.2936 17.4547 12.5322C17.4547 9.77077 15.2161 7.5322 12.4547 7.5322C11.3678 7.5322 10.362 7.87896 9.54174 8.4679L12.1332 8.4679V10.4679H6.13324V4.4679Z" v-bind:fill="theme.Text"/>
+                    </svg>
+                    
+                </icon-button>
+                
+                {% comment %} redo {% endcomment %}
+                <icon-button
+                    v-bind:color="theme.Gray6"
+                    v-bind:size="buttonSize"
+                    v-bind:style="{marginLeft: '1em'}">
+
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5762 11.0499L13.4019 9.05752L15.7765 8.84977C14.8774 7.98322 13.6545 7.4503 12.3072 7.4503C9.54577 7.4503 7.30719 9.68888 7.30719 12.4503C7.30719 15.2117 9.54577 17.4503 12.3072 17.4503C14.128 17.4503 15.7214 16.4771 16.5957 15.0224L18.5984 15.5231C17.4604 17.8487 15.0708 19.4503 12.3072 19.4503C8.4412 19.4503 5.30719 16.3163 5.30719 12.4503C5.30719 8.58431 8.4412 5.4503 12.3072 5.4503C14.2536 5.4503 16.0145 6.24474 17.2833 7.52706L17.0381 4.72412L19.0305 4.5498L19.5534 10.527L13.5762 11.0499Z" v-bind:fill="theme.Text"/>
+                    </svg>
+
+                    
+                </icon-button>
+
+                {% comment %} download {% endcomment %}
+                <icon-button
+                    v-bind:color="theme.Blue"
+                    v-bind:size="buttonSize"
+                    v-bind:style="{marginLeft: '1em'}">
+
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.0667 5C11.0667 4.44772 11.5144 4 12.0667 4C12.6189 4 13.0667 4.44772 13.0667 5V12.1578L16.3094 8.91501L17.7236 10.3292L12.0668 15.9861L6.40991 10.3292L7.82413 8.91501L11.0667 12.1575V5Z" fill="white"/>
+                        <path d="M4.06665 14H6.06665V18H18.0667V14H20.0667V18C20.0667 19.1046 19.1712 20 18.0667 20H6.06665C4.96208 20 4.06665 19.1046 4.06665 18V14Z" fill="white"/>
+                    </svg>
+
+                    
+                </icon-button>
+
+            </template>
+
+        </nav-bar>
+
+        <div v-bind:style="{
+            width: '100%',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        }">
+            <div id="canvas-div" v-bind:style="canvasDivStyle">
+                <canvas resize id="canvas"></canvas>
+            </div>
+        </div>
+
+        <tool-bar v-bind:theme="theme" v-bind:buttons="controllerButtons">
+            {% comment %} <icon-button v-bind:size="buttonSize" v-bind:color="theme.Blue"></icon-button>
+            <icon-button v-bind:size="buttonSize" v-bind:color="theme.Blue"></icon-button>
+            <icon-button v-bind:size="buttonSize" v-bind:color="theme.Blue"></icon-button>
+            <icon-button v-bind:size="buttonSize" v-bind:color="theme.Blue"></icon-button>
+            <icon-button v-bind:size="buttonSize" v-bind:color="theme.Blue"></icon-button>
+            <icon-button v-bind:size="buttonSize" v-bind:color="theme.Blue"></icon-button> {% endcomment %}
+        </tool-bar>
+
+    </div>
+
+    {% comment %} scripts {% endcomment %}
+    {# load vue js coresponding to project status #}
+    {% if debug %}
+        <script src="{% static 'js/vendor/vue-debug.js'%}"></script>
+    {% else %}
+        <script src="{% static 'js/vendor/vue-production.js'%}"></script>
+    {% endif %}
+
+    {% comment %} load other scripts {% endcomment %}
+    <script src="{% static 'js/color.js' %}"></script>
+    <script src="{% static 'js/vendor/paper-full.js' %}"></script>
+    <script src="{% static 'js/components.js' %}"></script>
+    <script src="{% static 'js/workspace.js' %}"></script>
+
+</body>
+</html>

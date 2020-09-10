@@ -1,0 +1,17 @@
+#app{
+    min-height: 100vh;
+}
+
+#body{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#design-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: stretch;
+    align-items: stretch;
+}
