@@ -1,0 +1,7 @@
+{% load static %}
+{# load two js coresponding to project status #}
+{% if debug %}
+    <script src="{% static 'js/vendor/two.js'%}"></script>
+{% else %}
+    <script src="{% static 'js/vendor/two.min.js'%}"></script>
+{% endif %}

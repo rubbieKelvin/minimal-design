@@ -3,9 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Design - Home</title>
+
+    {% include "./snippets/meta.html" with title="Minimal Design - Home" %}
 
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     <link rel="stylesheet" href="{% static 'css/components.css' %}">
@@ -82,12 +81,7 @@
     </div>
 
     {% comment %} scripts {% endcomment %}
-    {# load vue js coresponding to project status #}
-    {% if debug %}
-        <script src="{% static 'js/vendor/vue-debug.js'%}"></script>
-    {% else %}
-        <script src="{% static 'js/vendor/vue-production.js'%}"></script>
-    {% endif %}
+    {% include "./snippets/vue.html" with debug=debug %}
 
     {% comment %} load other scripts {% endcomment %}
     <script src="{% static 'js/color.js' %}"></script>

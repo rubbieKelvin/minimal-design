@@ -1,0 +1,7 @@
+{% load static %}
+{# load vue js coresponding to project status #}
+{% if debug %}
+    <script src="{% static 'js/vendor/vue-debug.js'%}"></script>
+{% else %}
+    <script src="{% static 'js/vendor/vue-production.js'%}"></script>
+{% endif %}

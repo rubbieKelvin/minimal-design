@@ -1,0 +1,84 @@
+<template v-bind:slot="{{ slot }}">
+    
+    {% comment %} new rectangle {% endcomment %}
+    <icon-button
+        v-bind:color="(cursor == 'rectangle') ? theme.Blue : theme.Gray6"
+        v-bind:size="buttonSize"
+        @button-clicked="cursor ='rectangle'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="path-1-inside-1" fill="white">
+                <rect x="4" y="4" width="16" height="16" rx="1"/>
+            </mask>
+            <rect x="4" y="4" width="16" height="16" rx="1" v-bind:stroke="(cursor == 'rectangle') ? 'white':theme.Text" stroke-width="4" mask="url(#path-1-inside-1)"/>
+        </svg>
+
+    </icon-button>
+
+
+    {% comment %} new circle {% endcomment %}
+    <icon-button
+        v-bind:color="(cursor == 'circle') ? theme.Blue : theme.Gray6"
+        v-bind:size="buttonSize"
+        @button-clicked="cursor='circle'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="14" height="14" rx="7" v-bind:stroke="(cursor == 'circle') ? 'white':theme.Text" stroke-width="2"/>
+        </svg>    
+
+    </icon-button>
+
+    {% comment %} new trangle {% endcomment %}
+    <icon-button
+        @button-clicked="cursor = 'polygon'"
+        v-bind:color="(cursor == 'polygon') ? theme.Blue:theme.Gray6"
+        v-bind:size="buttonSize">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 6.125L18.3333 18L5.66667 18L12 6.125Z" v-bind:stroke="(cursor == 'polygon') ? 'white':theme.Text" stroke-width="2"/>
+        </svg>
+
+    </icon-button>
+
+
+    {% comment %} new text {% endcomment %}
+    <icon-button
+        v-bind:color="(cursor == 'text') ? theme.Blue:theme.Gray6"
+        v-bind:size="buttonSize"
+        @button-clicked="cursor = 'text'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M13 9H10V17H8V9H5V7H13V9ZM18 13H16V17H14V13H12V11H18V13Z" v-bind:fill="(cursor == 'text') ? 'white':theme.Text"/>
+        </svg>
+
+    </icon-button>
+
+
+    {% comment %} image {% endcomment %}
+    <icon-button
+        v-bind:color="(cursor == 'image') ? theme.Blue:theme.Gray6"
+        v-bind:size="buttonSize"
+        @button-clicked="cursor = 'image'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 7C5.34315 7 4 8.34315 4 10C4 11.6569 5.34315 13 7 13C8.65685 13 10 11.6569 10 10C10 8.34315 8.65685 7 7 7ZM6 10C6 9.44772 6.44772 9 7 9C7.55228 9 8 9.44772 8 10C8 10.5523 7.55228 11 7 11C6.44772 11 6 10.5523 6 10Z" v-bind:fill="(cursor == 'image') ? 'white':theme.Text"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34315 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM21 5H3C2.44772 5 2 5.44772 2 6V18C2 18.5523 2.44772 19 3 19H7.31374L14.1924 12.1214C15.364 10.9498 17.2635 10.9498 18.435 12.1214L22 15.6863V6C22 5.44772 21.5523 5 21 5ZM21 19H10.1422L15.6066 13.5356C15.9971 13.145 16.6303 13.145 17.0208 13.5356L21.907 18.4217C21.7479 18.7633 21.4016 19 21 19Z" v-bind:fill="(cursor == 'image') ? 'white':theme.Text"/>
+        </svg>
+
+    </icon-button>
+
+
+    {% comment %} menu {% endcomment %}
+    <icon-button
+        v-bind:color="theme.Blue"
+        v-bind:size="buttonSize">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 6C2 5.44772 2.44772 5 3 5H21C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H3C2.44772 7 2 6.55228 2 6Z" fill="white"/>
+            <path d="M2 12.0322C2 11.4799 2.44772 11.0322 3 11.0322H21C21.5523 11.0322 22 11.4799 22 12.0322C22 12.5845 21.5523 13.0322 21 13.0322H3C2.44772 13.0322 2 12.5845 2 12.0322Z" fill="white"/>
+            <path d="M3 17.0645C2.44772 17.0645 2 17.5122 2 18.0645C2 18.6167 2.44772 19.0645 3 19.0645H21C21.5523 19.0645 22 18.6167 22 18.0645C22 17.5122 21.5523 17.0645 21 17.0645H3Z" fill="white"/>
+        </svg>
+
+    </icon-button>
+
+</template>

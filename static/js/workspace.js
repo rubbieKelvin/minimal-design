@@ -1,17 +1,17 @@
-class ControllerState{
-    get Default(){
-        return [
-            {
-                name: "rectangle",
-                paths: [
-                    {path:"M1 0C0.447716 0 0 0.447715 0 1V12C0 12.5523 0.447716 13 1 13H12C12.5523 13 13 12.5523 13 12V1C13 0.447715 12.5523 0 12 0H1ZM3 2C2.44772 2 2 2.44772 2 3V10C2 10.5523 2.44772 11 3 11H10C10.5523 11 11 10.5523 11 10V3C11 2.44772 10.5523 2 10 2H3Z"}
-                ]
-            }
-        ]
-    }
-}
+// workspace javascript
 
-let controllerState = new ControllerState();
+var el = document.getElementById('canvas-div');
+
+const two = new Two({
+    width: innerWidth*.7,
+    height: innerHeight*.75
+}).appendTo(el);
+
+const controls = {
+    main: "current"
+};
+
+const objects = [];
 
 let app = new Vue({
 
@@ -21,30 +21,38 @@ let app = new Vue({
         return {
             theme: new Color(localStorage.getItem("theme")),
             buttonSize: 40,
-            paper: null,
-            controllerButtons: controllerState.Default
+            controls: controls,
+            two: two,
+            cursor: null,
+            objects: objects
         }
-    },
-
-    // on created
-    created(){
-        this.paper = paper.setup(document.getElementById('canvas'));
     },
 
     computed: {
         canvasDivStyle(){
             return {
-                width: "50%",
-                height: "65%",
-                backgroundColor: this.theme.BG,
-                borderRadius: "5px",
                 boxShadow: "0px 0px 4px 4px rgba(76, 92, 96, 0.1)",
             }
         }
     },
     
     methods: {
-
+        setCurrentControl(control){
+            Object.keys(this.controls).forEach(el => {
+                this.controls[el] = "";
+            });
+            this.controls[control] = "current";
+        }
     }
     
 });
+
+const svg = document.querySelector("#canvas-div > svg:nth-child(1)");
+
+svg.onmousedown = (ev) => {
+    console.log(ev);
+};
+
+svg.onmouseup = (ev) => {
+    app.cursor = null;
+}

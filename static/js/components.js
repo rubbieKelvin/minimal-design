@@ -233,13 +233,7 @@ Vue.component('fab-button', {
 Vue.component('tool-bar', {
 
     props: {
-        theme: Object,
-        buttons: {
-            type: Array,
-            default(){
-                return [];
-            }
-        }
+        theme: Object
     },
 
     methods: {},
@@ -273,11 +267,9 @@ Vue.component('tool-bar', {
     template: `
         <div v-bind:style="outterStyle">
             <div class="tool-bar" v-bind:style="style">
-                <icon-button v-bind:color="'transparent'" v-bind:key="button.id" v-for="button in buttons">
-                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path v-bind:key="path.id" v-for="path in button.paths" d="path.path" v-bind:fill="theme.Text"/>
-                    </svg>
-                </icon-button>
+                <slot name="current">
+                    
+                </slot>
             </div>
         </div>
     `
